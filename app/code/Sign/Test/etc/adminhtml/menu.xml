@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Sign_Test::signup" title="Post Forms" module="Sign_Test" sortOrder="51" resource="Sign_Test::signup"/>
+        <add id="Sign_Test::post" title="Posts" module="Sign_Test" sortOrder="10" action="sign_test/post" resource="Sign_Test::post" parent="Sign_Test::signup"/>
+    </menu>
+</config>
