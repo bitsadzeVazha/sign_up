@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   <table name="sign_test_input" resource="default" engine="innodb" comment="Post Table">
+      
+     
+      <column xsi:type="varchar" name="country" nullable="false" length="255" comment="Counrty" />
+      <column xsi:type="varchar" name="description" nullable="false" length="255" comment="Descrition" />
+      <column xsi:type="int" name="temperature" nullable="false" length="255" comment="Temperature" />
+      <column xsi:type="int" name="feels like" unsigned="true" nullable="true" identity="false" default="" comment="Feels Like"/>
+      <column xsi:type="int" name="pressure"  nullable="true" identity="false" default="" comment="Pressure"/>
+      <column xsi:type="int" name="humidity" unsigned="true" nullable="true" identity="false" default="" comment="Humidity"/>
+      <column xsi:type="int" name="wind speed" unsigned="true" nullable="true" identity="false" default="" comment="Wind Speed"/>
+      <column xsi:type="datetime" name="sunrise" nullable="false" comment="Sunrise"/>
+      <column xsi:type="datetime" name="sunset" nullable="false" comment="Sunset"/>
+      <column xsi:type="datetime" name="report" nullable="false" comment="Data"
+                default="CURRENT_TIMESTAMP"/>
+      <column xsi:type="int" name="code" unsigned="true" nullable="true" identity="false" default="" comment="Code"/>
+   </table>
+</schema>

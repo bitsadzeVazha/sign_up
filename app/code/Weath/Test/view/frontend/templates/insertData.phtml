@@ -1,0 +1,260 @@
+<?php
+/**
+ * @var \Weath\Test\Block\Vista $block
+ */
+$list = $block->getPostCollection();
+$lastItem = $list->getLastItem();
+$lastcity =  $lastItem->getData()["city"];
+$country = $lastItem->getData()["country"];
+$description = $lastItem->getData()["description"];
+$temp = $lastItem->getData()["temperature"];
+$temc = ($temp-273.15);
+$feels = $lastItem->getData()["feels like"]-273.15;
+$pressure = $lastItem->getData()["pressure"];
+$humidity = $lastItem->getData()["humidity"];
+$wind = $lastItem->getData()["wind speed"];
+$sunrise = $lastItem->getData()["sunrise"];
+$sunset = $lastItem->getData()["sunset"];
+$code = $lastItem->getData()["code"];
+?>
+
+
+<div id="custom-form">
+   <form class="contact custom"
+         action="<?php echo $this->getUrl('weather/index/save', ['_secure' => true]);?>"
+         id="custom-form"
+         method="post"
+         data-hasrequired="<?php  echo __('* Required Fields') ?>"
+         data-mage-init='{"validation":{}}'>
+
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?php  echo __("City") ?></span></legend><br />
+            <div class="field name required">
+                <label class="label" for="city"><span><?php  echo __('City') ?></span></label>
+                <div class="control">
+                    <input name="city" id="city" title="<?php  echo __('City') ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+                    <span><?php  echo __('Submit') ?></span>
+                </button>
+            </div>
+        </div>
+   </form>
+</div>
+
+<?php
+            if($code === "200"){
+                echo  '<ul>
+                <li> City: '.$lastcity.'</li>
+                <li> Country: '.$country.'</li>
+                <li> Description: '.$description.'</li>
+                <li> Temperature(&#8451): '.$temc.'</li>
+                <li> Feels Like(&#8451): '.$feels.'</li>
+                <li> Pressure(hPa): '.$pressure.'</li>
+                <li> Humidity(%): '.$humidity.'</li>
+                <li> Wind Speed(meter/sec): '.$wind.'</li>
+                <li> Sunrise: '.$sunrise.'</li>
+                <li> Sunset: '.$sunset.'</li>
+            </ul>';
+         }else{
+            echo "<h2>Please enter the city name correctly</h2>";
+         }
+               
+         
+            
+            
+        
+        
+    
+    ?>
+<label class="label"><span><?php  echo __('Filter') ?></span></label>
+<div id="custom-form">
+   <form class="contact custom"
+         action="<?php echo $this->getUrl('weather/index/insert', ['_secure' => true]);?>"
+         id="custom-form"
+         method="post"
+         data-hasrequired="<?php  echo __('* Required Fields') ?>"
+         data-mage-init='{"validation":{}}'>
+
+        <fieldset class="fieldset">
+            
+            <div class="field name required formWidth">
+                <label class="label" for="city"><span><?php  echo __('City') ?></span></label>
+                <div class="control">
+                    <input name="city" id="city" title="<?php  echo __('City') ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field name required formWidth">
+            <label class="label" for="city"><span><?php  echo __('Date From') ?></span></label>
+                <div class="control">
+                    <input name="date_from" id="fate_from" title="<?php  echo __('Date From') ?>" class="input-text" type="date" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field name required formWidth">
+            <label class="label" for="city"><span><?php  echo __('Date To') ?></span></label>
+                <div class="control">
+                    <input name="date_to" id="date_to" title="<?php  echo __('Date To') ?>" class="input-text" type="date" data-validate="{required:true}"/>
+                </div>
+            </div>
+        </fieldset>
+	
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+                    <span><?php  echo __('show Histroy') ?></span>
+                </button>
+              
+        </div>
+   </form>
+</div>
+<div id="custom-form" class="myForm">
+   <form class="contact custom"
+         action="<?php echo $this->getUrl('weather/index/insert', ['_secure' => true]);?>"
+         id="custom-form"
+         method="post"
+         data-hasrequired="<?php  echo __('* Required Fields') ?>"
+         data-mage-init='{"validation":{}}'>
+	
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="convert" id="convert" value="" />
+                <button type="submit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+                    <span><?php  echo __('To PDF') ?></span>
+                </button>
+            </div>
+        </div>
+   </form>
+</div>
+
+
+<style>
+    .formWidth{
+        width: 150px;
+    }
+    .myForm{
+        padding: 10px;
+    }
+    table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+    td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
+    tr:nth-child(even) { background-color: #dddddd; }
+    .post-id{width:2%} .post-name{width:30%}
+</style>
+
+<table>
+    <tr>
+        <th >City</th>
+        <th >Country</th>
+        <th>Description</th>
+        <th >Temperature</th>
+        <th >Feels Like</th>
+        <th>Pressure</th>
+        <th>Humidity</th>
+        <th >Wind Speed</th>
+        <th >Sunrise</th>
+        <th>Sunset</th>
+        <th>Date</th>
+    </tr>
+    <?php
+
+       
+
+    $city = '';
+    $dateFrom = '';
+    $dateTo = '';
+    if(isset($_POST["hideit"])){
+        $city = ($_POST['city']);
+        $dateFrom = ($_POST['date_from']);
+        $dateTo = ($_POST['date_to']);
+        echo  $city;
+    };
+
+    if(isset($_POST["convert"])){
+       
+        echo  "hiiiii";
+    };
+
+    $x = 0;
+    
+    $yPad = 10;
+    $this->y = 850 - 100;
+    if(isset($_POST["convert"])){
+        
+        $pdf = new \Zend_Pdf(); //Create new PDF file
+        
+        $page = $pdf->newPage(\Zend_Pdf_Page::SIZE_A4);
+        
+        $pdf->pages[] = $page; 
+        
+        $page->setFont(\Zend_Pdf_Font::fontWithName(\Zend_Pdf_Font::FONT_HELVETICA), 7);  //Set Font
+        $page->drawText("City", $x +20, $this->y);
+        $page->drawText("Country", $x +50, $this->y); 
+        $page->drawText("Description", $x +80, $this->y); 
+        $page->drawText("Temperature", $x +120, $this->y); 
+        $page->drawText("Feels", $x +180, $this->y); 
+        $page->drawText("Pressure", $x +220, $this->y); 
+        $page->drawText("Humidity", $x +260, $this->y);  
+        $page->drawText("Wind", $x +300, $this->y); 
+        $page->drawText("Sunrise", $x +360, $this->y); 
+        $page->drawText("Sunset", $x +450, $this->y); 
+        
+        foreach ($block->getPostCollection() as $key=>$post){
+            $yPad = $yPad + 20;
+            $page->drawText($post->getCity(), $x +20, $this->y - $yPad); 
+            $page->drawText($post->getCountry(), $x +50, $this->y - $yPad); 
+            $page->drawText($post->getDescription(), $x +80, $this->y - $yPad); 
+            $page->drawText($post->getTemperature(), $x + 140, $this->y - $yPad); 
+            $page->drawText($post->getFeelsLike(), $x +180, $this->y - $yPad);
+            $page->drawText($post->getPressure(), $x + 220, $this->y - $yPad);  
+            $page->drawText($post->getHumidity(), $x + 260, $this->y - $yPad); 
+            $page->drawText($post->getWind(), $x + 300, $this->y - $yPad); 
+            $page->drawText($post->getSunrise(), $x +360, $this->y - $yPad); 
+            $page->drawText($post->getSunset(), $x + 450, $this->y - $yPad); 
+            
+        }
+        
+         
+        $pdfData = $pdf->render(); // Get PDF document as a string 
+        
+        header("Content-Disposition: inline; filename=result.pdf"); 
+        
+        header("Content-type: application/x-pdf"); 
+        
+        echo $pdfData; 
+        
+    };
+
+   
+
+
+    foreach ($block->getPostCollection() as $key=>$post){
+        if($post->getCity() === $city && $dateFrom <= $post->getReport() && $post->getReport() <= $dateTo){
+            
+            echo '<tr>
+            <td>'.$post->getCity().'</td>
+            <td>'.$post->getCountry().'</td>
+            <td>'.$post->getDescription().'</td>
+            <td>'.$post->getTemperature().'</td>
+            <td>'.$post->getFeels_Like().'</td>
+            <td>'.$post->getPressure().'</td>
+            <td>'.$post->getHumidity().'</td>
+            <td>'.$post->getWind().'</td>
+            <td>'.$post->getSunrise().'</td>
+            <td>'.$post->getSunset().'</td>
+            <td>'.$post->getReport().'</td>
+          </tr>';
+        }
+        
+      
+    }
+   
+    ?>
+</table>

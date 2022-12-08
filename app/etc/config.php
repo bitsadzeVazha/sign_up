@@ -340,11 +340,11 @@ return [
         'Klarna_KpGraphQl' => 1,
         'PayPal_Braintree' => 1,
         'PayPal_BraintreeGraphQl' => 1,
-        'Sign_Test' => 1,
         'Temando_ShippingRemover' => 1,
         'Vertex_Tax' => 1,
         'Vertex_AddressValidationApi' => 1,
         'Vertex_AddressValidation' => 1,
+        'Weath_Test' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];
